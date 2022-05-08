@@ -17,16 +17,6 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].bundle.js',
     },
-    devServer: {
-      static: {
-        directory: path.resolve(__dirname, 'dist')
-      },
-      port: 3000,
-      open: true,
-      hot: true,
-      compress: true,
-      historyApiFallback: true,
-    },
     // hmtlWebpackPlugin
     plugins: [
       new HtmlWebpackPlugin({
@@ -44,13 +34,11 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: true,
         inject: true,
-        name: 'JATE',
-        /* 
-        short name
-        description
-        background_color
-        theme_color
-        */
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'Freedom to edit your text',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         icons: [
