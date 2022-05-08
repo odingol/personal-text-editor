@@ -14,16 +14,73 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      filename: '[name].bundle.js',
     },
+    devServer: {
+      static: {
+        directory: path.resolve(__dirname, 'dist')
+      },
+      port: 3000,
+      open: true,
+      hot: true,
+      compress: true,
+      historyApiFallback: true,
+    },
+    // hmtlWebpackPlugin
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'J.A.T.E',
+      }),
+
+      // Inject the custom service worker where we can cache information even offline
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+
+      // Creates a manifest.json file
+      new WebpackPwaManifest({
+        fingerprints: true,
+        inject: true,
+        name: 'JATE',
+        /* 
+        short name
+        description
+        background_color
+        theme_color
+        */
+        start_url: '/',
+        publicPath: '/',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
+      // Using CSS loaders
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
     },
   };
