@@ -5,8 +5,8 @@
     "build": "webpack --mode production",
     "start": "webpack --watch"
   },
-  "author": "2U",
-  "license": "UNLICENSED",
+  "author": "Lamor Odingo",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/plugin-transform-runtime": "^7.17.10",
