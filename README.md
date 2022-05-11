@@ -35,7 +35,9 @@ npm run start
  ## Usage
  <br>
 
-This app is designed to aid users into using a text editor that runs in the broswer both online or offline. It is a single-page application used to meet this week's PWA criteria.   
+This app is designed to aid users into using a text editor that runs in the broswer both online or offline. It is a single-page application used to meet this week's PWA criteria.
+
+Here is the link to the deployed site using [Heroku](https://personaltexteditor.herokuapp.com/)
 
 <br>Here is an example of the use of the application:
 
