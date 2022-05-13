@@ -43,7 +43,7 @@ Here is the link to the deployed site using [Heroku](https://personaltexteditor.
 
 <br>
 
-![Personal Text Editor Functionality]()
+![Personal Text Editor Functionality](./Assets/00-demo.gif)
 <br><br>
     
 ## License 
